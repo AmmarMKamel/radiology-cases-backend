@@ -1,0 +1,42 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "This is the backend for the radiology cases website",
+  "main": "app.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/app.js",
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/app.js\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ammar Kamel",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.10.5",
+    "body-parser": "^1.20.3",
+    "cloudinary": "^2.5.1",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "express-validator": "^7.2.0",
+    "mongoose": "^8.8.4",
+    "puppeteer": "^23.10.3",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1",
+    "uuid": "^11.0.3"
+  },
+  "devDependencies": {
+    "@types/amqplib": "^0.10.6",
+    "@types/express": "^5.0.0",
+    "@types/mongoose": "^5.11.96",
+    "@types/node": "^22.10.2",
+    "@types/puppeteer": "^5.4.7",
+    "concurrently": "^9.1.0",
+    "nodemon": "^3.1.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": "22.12.0"
+  }
+}

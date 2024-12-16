@@ -26,7 +26,9 @@ export const createCase = async (req: Request, res: Response): Promise<any> => {
 
     const url: string = req.body.url;
 
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      executablePath: '/usr/bin/chromium-browser',
+    });
     const page = await browser.newPage();
 
     await page.goto(url, { timeout: 60000 });

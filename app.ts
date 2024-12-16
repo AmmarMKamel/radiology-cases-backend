@@ -7,13 +7,13 @@ import amqplib from "amqplib";
 import { Server } from "socket.io";
 import http from "http";
 import dotenv from "dotenv";
-require("dotenv").config();
+// require("dotenv").config();
 
 import { connectToRabbitMQ, getChannel } from "./rabbitmq";
 
 import caseRoutes from "./routes/case";
 
-// dotenv.config({ path: `.env.${process.env.NODE_ENV || "development"}` });
+dotenv.config({ path: `.env.${process.env.NODE_ENV || "development"}` });
 
 const app = express();
 

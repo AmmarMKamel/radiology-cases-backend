@@ -34,10 +34,7 @@ export const createCase = async (req: Request, res: Response): Promise<any> => {
     page.setDefaultNavigationTimeout(0);
     await page.goto(url);
 
-    await page.waitForSelector(".header-title", {
-      visible: true,
-      timeout: 15000,
-    });
+    await page.waitForSelector(".header-title", { visible: true });
     const caseTitleElement = await page.$(".header-title");
     const caseTitle: string = await (
       caseTitleElement as ElementHandle

@@ -32,7 +32,7 @@ async function connectToRabbitMQ() {
 async function consumeMessages() {
   await mongoose.connect(process.env.MONGODB_URI!);
   await connectToRabbitMQ();
-  channel.consume(queue, async (msg) => {
+  channel.consume(queue, async (msg: any) => {
     if (msg !== null) {
       try {
         const message = JSON.parse(msg.content.toString());

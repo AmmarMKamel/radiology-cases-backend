@@ -26,10 +26,13 @@ export const createCase = async (req: Request, res: Response): Promise<any> => {
 
     const url: string = req.body.url;
 
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      timeout: 0,
+    });
     const page = await browser.newPage();
 
-    await page.goto(url, { timeout: 60000 });
+    page.setDefaultNavigationTimeout(0);
+    await page.goto(url);
 
     await page.waitForSelector(".header-title", {
       visible: true,

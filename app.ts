@@ -7,7 +7,6 @@ import amqplib from "amqplib";
 import { Server } from "socket.io";
 import http from "http";
 import dotenv from "dotenv";
-// require("dotenv").config();
 
 import { connectToRabbitMQ, getChannel } from "./rabbitmq";
 

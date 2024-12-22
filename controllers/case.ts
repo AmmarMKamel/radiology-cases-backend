@@ -278,10 +278,19 @@ export const getCases = async (req: Request, res: Response): Promise<any> => {
   try {
     const page = parseInt(req.query?.page as string) || 1;
     const skip = (page - 1) * 10;
+    const searchTerm = req.query?.q || "";
 
-    const total = await Case.countDocuments();
+    const total = await Case.countDocuments({
+      ...(searchTerm ? { title: { $regex: searchTerm, $options: "i" } } : {}),
+    });
 
-    const cases = await Case.find({}, "title thumbnail createdAt")
+    const cases = await Case.find(
+      {
+        ...(searchTerm ? { title: { $regex: searchTerm, $options: "i" } } : {}),
+      },
+      "title thumbnail createdAt"
+    )
+      .sort({ createdAt: -1 })
       .skip(skip)
       .limit(10)
       .lean();
